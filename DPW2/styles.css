@@ -1,0 +1,37 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+
+.container {
+    width: 60%;
+    margin: auto;
+    background: linear-gradient(to bottom, #bde0fc, #eef6fc);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #2e455d;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.intro img {
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.intro img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}

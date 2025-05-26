@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+  background: #e6f7ff;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(173, 216, 230, 0.3);
+  border-bottom: 1px solid rgba(173, 216, 230, 0.5);
+}
+
+.bg-gradient {
+  z-index: -2;
+  background: #e6f7ff radial-gradient(ellipse 80% 80% at 50% -20%, rgba(135, 206, 250, 0.4), transparent);
+}
+
+.section-full {
+  min-height: 100vh;
+  padding: 60px 20px;
+}
+
+.project-card {
+  background: linear-gradient(to bottom, #add8e6, #87cefa);
+  color: #333;
+  border: 1px solid rgba(173, 216, 230, 0.5);
+  transition: 0.3s ease-in-out;
+  color: black;
+}
+
+.project-card:hover {
+  background: white;
+  color: #0078d7;
+}
+
+.neon-glow {
+  overflow: hidden;
+}
+
+.neon-glow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  height: 1px;
+  width: 110%;
+  background: linear-gradient(90deg,
+      #87cefa 0%,
+      #add8e6 25%,
+      #b0e0e6 50%,
+      #add8e6 75%,
+      #87cefa 100%);
+  background-size: 500% 100%;
+  animation: borderGlow 50s linear infinite;
+  pointer-events: none;
+  border-radius: 10px;
+  box-shadow:
+    0 2px 15px rgba(135, 206, 250, 0.5),
+    0 4px 25px rgba(135, 206, 250, 0.3);
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 500% 50%;
+  }
+}
+
+.neon-glow-vertical {
+  width: 4px;
+  background: linear-gradient(180deg,
+      #87cefa 0%,
+      #add8e6 25%,
+      #b0e0e6 50%,
+      #add8e6 75%,
+      #87cefa 100%);
+  background-size: 100% 500%;
+  animation: borderGlowVertical 30s linear infinite;
+  border-radius: 10px;
+  box-shadow:
+    0 0 10px rgba(135, 206, 250, 0.5),
+    0 0 20px rgba(135, 206, 250, 0.3);
+}
+
+@keyframes borderGlowVertical {
+  0% {
+    background-position: 0% 500%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,
+      #00f0ff,
+      #5a6cff,
+      #9955ff,
+      #cc44ff,
+      #ff33cc);
+  border-radius: 10px;
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #5a6cff,
+    0 0 30px #9955ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg,
+      #00eeffb5,
+      #5a6dffb5,
+      #9955ffb5,
+      #cc44ffb5,
+      #ff33ccb5);
+}
+
+.neon-text {
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+  color: #fff;
+  background: linear-gradient(90deg,
+      #00f0ff 0%,
+      #00d4ff 5%,
+      #00b8ff 10%,
+      #009cff 15%,
+      #5a6cff 20%,
+      #9955ff 25%,
+      #cc44ff 30%,
+      #ff33cc 35%,
+      #ff6699 40%,
+      #ff9966 45%,
+      #ffcc33 50%,
+      #ffcc33 55%,
+      #ff9966 60%,
+      #ff6699 65%,
+      #ff33cc 70%,
+      #cc44ff 75%,
+      #9955ff 80%,
+      #5a6cff 85%,
+      #009cff 90%,
+      #00b8ff 95%,
+      #00f0ff 100%);
+  background-size: 500%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neonIconFlow 10s linear infinite;
+  text-shadow:
+    0 0 5px rgba(0, 240, 255, 0.5),
+    0 0 10px rgba(0, 240, 255, 0.3),
+    0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.neon-icon {
+  display: inline-block;
+  position: relative;
+  color: #333;
+}
+
+.neon-icon:hover {
+  background: linear-gradient(90deg,
+      #0078d7 0%,
+      #00a0e9 25%,
+      #0078d7 50%,
+      #00a0e9 75%,
+      #0078d7 100%);
+  background-size: 500%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neonIconFlow 7s linear infinite;
+  text-shadow:
+    0 0 5px rgba(0, 120, 215, 0.5),
+    0 0 10px rgba(0, 120, 215, 0.3);
+}
+
+@keyframes neonIconFlow {
+  0% {
+    background-position: 500% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

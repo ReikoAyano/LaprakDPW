@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            color: #e0f2ff;
+        }
+
+        .container-login {
+            background: linear-gradient(to bottom, #1e3a8a, #1e40af);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            width: 320px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #93c5fd;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            text-align: left;
+            color: #bfdbfe;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #60a5fa;
+            border-radius: 6px;
+            background: #1e293b;
+            color: #fff;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #2563eb;
+        }
+
+        .container-password {
+            position: relative;
+        }
+
+        .input-password {
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-40%);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            filter: brightness(1.5);
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #3b82f6;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-login">
+        <h2>Login</h2>
+
+        <label for="user-input">Username</label>
+        <input type="text" id="user-input">
+
+        <label for="pass-input">Password</label>
+        <div class="container-password">
+            <input type="password" id="pass-input" class="input-password">
+            <img src="eye.svg" id="ikon-toggle" class="toggle-password" onclick="hidePass()">
+        </div>
+
+        <div class="remember-me">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember Me</label>
+        </div>
+
+        <button class="btn-login" onclick="login()">Login</button>
+    </div>
+
+    <script>
+        function login() {
+            const userName = document.getElementById("user-input").value;
+            const pass = document.getElementById("pass-input").value;
+            const remember = document.getElementById("remember-me").checked;
+
+            if (userName === "" || pass === "") {
+                alert("Login Failed, Please Input All Columns");
+            } else {
+                let msg = "Username: " + userName + "\nPassword: " + pass;
+                if (remember) {
+                    msg += "\n✅ Remember Me is checked!";
+                }
+                alert(msg);
+            }
+        }
+
+        function hidePass() {
+            let inputPassword = document.getElementById("pass-input");
+            let iconToggle = document.getElementById("ikon-toggle");
+
+            if (inputPassword.type === "password") {
+                inputPassword.type = "text";
+                iconToggle.src = "noeye.svg"; // update to closed-eye icon
+            } else {
+                inputPassword.type = "password";
+                iconToggle.src = "eye.svg"; // update to open-eye icon
+            }
+        }
+    </script>
+</body>
+</html>

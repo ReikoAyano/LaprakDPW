@@ -1,0 +1,67 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #0a0f25, #0f172a);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+.card {
+  background: #1541c2;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 400px;
+}
+.btn-tab {
+  width: 50%;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  padding: 10px 0;
+  background-color: #1d2f6f;
+  color: #ccc;
+}
+.btn-tab.active {
+  background-color: #2e54c9;
+  color: #fff;
+}
+.form-section {
+  display: none;
+  margin-top: 20px;
+}
+.form-section.active {
+  display: block;
+}
+.form-control {
+  background-color: #101828;
+  color: #fff;
+  border: 1px solid #3b3b6f;
+  border-radius: 5px;
+}
+.form-control::placeholder {
+  color: #bbb;
+}
+.btn-primary {
+  background-color: #5b91ff;
+  border: none;
+  margin-top: 15px;
+}
+.btn-primary:hover {
+  background-color: #3b70e3;
+}
+.message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.message.success {
+  background-color: #198754;
+}
+.message.error {
+  background-color: #dc3545;
+}

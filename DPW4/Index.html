@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login/Register</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #0a0f25, #0f172a);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    .card {
+      background: #1541c2;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+    }
+
+    .btn-tab {
+      width: 50%;
+      border: none;
+      border-radius: 0;
+      font-weight: bold;
+      padding: 10px 0;
+      background-color: #1d2f6f;
+      color: #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .btn-tab.active {
+      background-color: #2e54c9;
+      color: #fff;
+    }
+
+    .form-section {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .form-control {
+      background-color: #101828;
+      color: #fff;
+      border: 1px solid #3b3b6f;
+      border-radius: 5px;
+    }
+
+    .form-control {
+    background-color: #101828;
+    color: #fff;
+    border: 1px solid #3b3b6f;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: #bbb;
+    }
+
+    .form-control:focus {
+      background-color: #fff;       /* Light background on focus */
+      color: #000;                  /* Black text when focused */
+      border-color: #5b91ff;
+      box-shadow: 0 0 0 0.2rem rgba(91, 145, 255, 0.25);
+    }
+
+
+    .btn-primary {
+      background-color: #5b91ff;
+      border: none;
+      margin-top: 15px;
+    }
+
+    .btn-primary:hover {
+      background-color: #3b70e3;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .message.success {
+      background-color: #198754;
+      color: #fff;
+    }
+
+    .message.error {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card text-center">
+    <div class="d-flex">
+      <button class="btn-tab active" id="btnLogin" onclick="toggleForm('login')">Login</button>
+      <button class="btn-tab" id="btnRegister" onclick="toggleForm('register')">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form-section active">
+      <div class="mt-3 mb-3">
+        <input type="text" class="form-control" id="loginUsername" placeholder="Username" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+      <div id="loginResult"></div>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="form-section">
+      <div class="mt-3 mb-3">
+        <input type="text" class="form-control" id="regUsername" placeholder="Username" required>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="regPassword" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+      <div id="registerResult"></div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm(type) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const btnLogin = document.getElementById('btnLogin');
+      const btnRegister = document.getElementById('btnRegister');
+
+      if (type === 'login') {
+        loginForm.classList.add('active');
+        registerForm.classList.remove('active');
+        btnLogin.classList.add('active');
+        btnRegister.classList.remove('active');
+      } else {
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        btnLogin.classList.remove('active');
+        btnRegister.classList.add('active');
+      }
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('regUsername').value;
+      const pass = document.getElementById('regPassword').value;
+      localStorage.setItem(user, JSON.stringify({ password: pass }));
+      document.getElementById('registerResult').innerHTML = '<div class="message success">Registration successful!</div>';
+      this.reset();
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUsername').value;
+      const pass = document.getElementById('loginPassword').value;
+      const data = JSON.parse(localStorage.getItem(user));
+
+      if (data && data.password === pass) {
+        document.getElementById('loginResult').innerHTML = '<div class="message success">Login successful!</div>';
+      } else {
+        document.getElementById('loginResult').innerHTML = '<div class="message error">Login failed. Wrong credentials.</div>';
+      }
+    });
+  </script>
+</body>
+</html>
